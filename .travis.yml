@@ -19,6 +19,8 @@ env:
       # Note: TWINE_PASSWORD is set in Travis settings
 
 before_script:
+  - wget http://www.hepforge.org/archive/lhapdf/LHAPDF-6.X.Y.tar.gz
+  - tar xf LHAPDF-6.2.1.tar.gz
   - mkdir build
   - pushd LHAPDF-6.2.1
   - autoreconf -f -i
