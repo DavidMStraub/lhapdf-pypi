@@ -24,5 +24,5 @@ ext = Extension("lhapdf",
                 )
 
 setup(name = "LHAPDF",
-      version = "6.2.1",
+      version = "6.2.1-1",
       ext_modules = [ext])
