@@ -1,0 +1,15 @@
+environment:
+  matrix:
+    - PYTHON: "C:\\Python27\\python.exe"
+    - PYTHON: "C:\\Python35\\python.exe"
+  TWINE_USERNAME: lhapdf
+
+build_script:
+  - pip install cibuildwheel==0.10.0
+  - cibuildwheel --output-dir wheelhouse
+  - pip install twine
+  - "%PYTHON% -m twine upload wheelhouse\\*.whl"
+
+artifacts:
+  - path: "wheelhouse\\*.whl"
+    name: Wheels
