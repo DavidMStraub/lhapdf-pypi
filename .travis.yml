@@ -23,8 +23,12 @@ before_script:
   - tar xf LHAPDF-6.2.1.tar.gz
   - mkdir build
   - pushd LHAPDF-6.2.1
-  - autoreconf -f -i
+  # start fix for Python 3.7: redo cython
   - python -m pip install cython
+  - pushd wrappers/python
+  - cython lhapdf.pyx --cplus
+  - popd
+  # end fix for Python 3.7
   - ./configure --prefix="$HOME/build"
   - make
   - make install
