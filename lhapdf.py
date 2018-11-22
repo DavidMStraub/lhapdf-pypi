@@ -1,13 +1,24 @@
 #! /usr/bin/env python
 
+from _lhapdf import *
 import os, sys
 import optparse, textwrap, logging
 
-
 import lhapdf
 __version__ = lhapdf.__version__
-configured_datadir = lhapdf.paths()[0]
 major_version = '.'.join(__version__.split('.')[:2])
+
+
+if 'LHAPDF_DATA_PATH' in os.environ:
+    configured_datadir = os.environ['LHAPDF_DATA_PATH']
+else:
+    import appdirs
+    import pkg_resources
+    pkg_resources.resource_filename('<package name>', 'data/')
+    _data_dir = appdirs.user_data_dir()
+    configured_datadir = _data_dir
+    _pkg_dir = pkg_resources.resource_filename('lhapdf', '')
+    os.environ['LHAPDF_DATA_PATH'] = '{}:{}'.format(_pkg_dir, _data_dir)
 
 
 ## Base paths etc. for set and index file downloading
