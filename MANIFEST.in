@@ -1,1 +1,1 @@
-include lhapdf.conf
+include bin/lhapdf
