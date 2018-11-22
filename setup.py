@@ -16,9 +16,10 @@ ext = Extension("lhapdf",
                 library_dirs=['/home/travis/build/lib', libdir],
                 language="C++",
                 libraries=["stdc++", "LHAPDF"],
-                scripts=['bin/lhapdf'],
                 )
 
 setup(name = "LHAPDF",
-      version = "6.2.1-3",
-      ext_modules = [ext])
+      version = "6.2.1-5",
+      ext_modules = [ext],
+      scripts=['bin/lhapdf'],
+)

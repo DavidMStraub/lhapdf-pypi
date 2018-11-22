@@ -24,6 +24,7 @@ before_script:
   - mkdir build
   - pushd LHAPDF-6.2.1
   - autoreconf -f -i
+  - python -m pip install cython
   - ./configure --prefix="$HOME/build"
   - make
   - make install
