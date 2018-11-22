@@ -12,7 +12,7 @@ notifications:
 
 env:
   global:
-    - CIBW_BUILD='cp27-* cp35-* cp36-*'
+    - CIBW_BUILD='cp27-* cp35-* cp36-* cp37-*'
     - LD_LIBRARY_PATH="$HOME/build/lib"
     - CIBW_ENVIRONMENT="LD_LIBRARY_PATH=/project/LHAPDF-6.2.1/src/.libs"
     - TWINE_USERNAME=lhapdf

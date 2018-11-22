@@ -6,8 +6,31 @@ import optparse, textwrap, logging
 
 import lhapdf
 __version__ = lhapdf.__version__
-configured_datadir = lhapdf.paths()[0]
 major_version = '.'.join(__version__.split('.')[:2])
+
+
+if 'LHAPDF_DATA_PATH' in os.environ:
+    configured_datadir = os.environ['LHAPDF_DATA_PATH']
+else:
+    import appdirs
+    configured_datadir = appdirs.user_data_dir()
+    os.environ['LHAPDF_DATA_PATH'] = configured_datadir
+    confpath = os.path.join(configured_datadir, 'lhapdf.conf')
+    if not os.path.exists(confpath):
+        with open(confpath, 'w') as f:
+            f.write("""Verbosity: 1
+Interpolator: logcubic
+Extrapolator: continuation
+ForcePositive: 0
+AlphaS_Type: analytic
+MZ: 91.1876
+MUp: 0.002
+MDown: 0.005
+MStrange: 0.10
+MCharm: 1.29
+MBottom: 4.19
+MTop: 172.9
+Pythia6LambdaV5Compat: true""")
 
 
 ## Base paths etc. for set and index file downloading
