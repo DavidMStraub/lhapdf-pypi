@@ -14,6 +14,8 @@ if 'LHAPDF_DATA_PATH' in os.environ:
 else:
     import appdirs
     configured_datadir = appdirs.user_data_dir('lhapdf')
+    if not os.path.exists(configured_datadir):
+        os.makedirs(configured_datadir)
     os.environ['LHAPDF_DATA_PATH'] = configured_datadir
     confpath = os.path.join(configured_datadir, 'lhapdf.conf')
     if not os.path.exists(confpath):
