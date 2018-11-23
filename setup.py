@@ -19,7 +19,7 @@ ext = Extension("lhapdf",
                 )
 
 setup(name = "LHAPDF",
-      version = "6.2.1-7",
+      version = "6.2.1-8",
       ext_modules = [ext],
       scripts=['bin/lhapdf'],
 )
