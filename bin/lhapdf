@@ -17,10 +17,10 @@ else:
     if not os.path.exists(configured_datadir):
         os.makedirs(configured_datadir)
     os.environ['LHAPDF_DATA_PATH'] = configured_datadir
-    confpath = os.path.join(configured_datadir, 'lhapdf.conf')
-    if not os.path.exists(confpath):
-        with open(confpath, 'w') as f:
-            f.write("""Verbosity: 1
+confpath = os.path.join(configured_datadir, 'lhapdf.conf')
+if not os.path.exists(confpath):
+    with open(confpath, 'w') as f:
+        f.write("""Verbosity: 1
 Interpolator: logcubic
 Extrapolator: continuation
 ForcePositive: 0
